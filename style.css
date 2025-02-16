@@ -1,0 +1,46 @@
+body {
+  font-family: system-ui;
+  background: url("https://facts.cx.ua/uploads/facts-2/mini/cikavi-fakti-pro-zimu-800-450.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn {
+  padding: 10px 24px;
+  background: #ceead2;
+  border-radius: 30px;
+}
+.btn-1 {
+  background: #cfe2f3;
+}
+.btn-2 {
+  background: #f4cccc;
+}
+.btn-3 {
+  background: #ace1af;
+}
+.login-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  background: white;
+  border-radius: 12px;
+  gap: 10px;
+}
+label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+input {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+@media (max-width: 768px) {
+}
