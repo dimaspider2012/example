@@ -1,6 +1,6 @@
 body {
   font-family: system-ui;
-  background: url("https://facts.cx.ua/uploads/facts-2/mini/cikavi-fakti-pro-zimu-800-450.jpg");
+  background: url("https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -33,6 +33,9 @@ body {
   border-radius: 12px;
   gap: 10px;
 }
+.welcome {
+  color: black;
+}
 label {
   font-size: 20px;
   margin-bottom: 10px;
@@ -44,3 +47,7 @@ input {
 }
 @media (max-width: 768px) {
 }
+/* Весна: https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg
+Осінь: https://tsystem.com.ua/wp-content/uploads/2024/09/autumn.jpg
+Літо: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7mvY1EEAbcnTHdJZOxQVJysNkbaOyVFU06g&s
+Зима: https://facts.cx.ua/uploads/facts-2/mini/cikavi-fakti-pro-zimu-800-450.jpg */
