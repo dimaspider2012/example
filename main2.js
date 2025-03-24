@@ -19,7 +19,7 @@ async function fetchData() {
     const data = await response.json();
     console.log(data);
     fetchedDataPeople = data.slice(1, 21);
-    fetchedDataSchedule = data.slice(23, 29);
+    fetchedDataSchedule = data.slice(22, 29);
   } catch (error) {
     console.error("Error", error);
   }
