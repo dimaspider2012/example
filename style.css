@@ -102,4 +102,11 @@ input {
 }
 .table-contener {
   display: flex;
+  gap: 30px;
+}
+.btns-table{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 10px;
 }
