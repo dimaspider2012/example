@@ -8,8 +8,10 @@
     <title>Проєкт для класу</title>
   </head>
   <body>
-    <div class="conteiner">
-      <div class="lef"></div>
+    <div id="loader" class="loader-container">
+      <div class="loader"></div>
+    </div>
+    <div class="conteiner" id="content" style="display: none">
       <button class="btn btn-1" onclick="showColumn(1)">6-1</button>
       <button class="btn btn-2" onclick="showColumn(2)">6-2</button>
       <button class="btn btn-3" onclick="showColumn(3)">6-3</button>
@@ -29,10 +31,10 @@
         </table>
         <div class="btns-table">
           <button class="btn" onclick="showColumnSchedule(1)">Понеділок</button>
-        <button class="btn" onclick="showColumnSchedule(2)">Вівторок</button>
-        <button class="btn" onclick="showColumnSchedule(3)">Середа</button>
-        <button class="btn" onclick="showColumnSchedule(4)">Четвер</button>
-        <button class="btn" onclick="showColumnSchedule(5)">П'ятниця</button>
+          <button class="btn" onclick="showColumnSchedule(2)">Вівторок</button>
+          <button class="btn" onclick="showColumnSchedule(3)">Середа</button>
+          <button class="btn" onclick="showColumnSchedule(4)">Четвер</button>
+          <button class="btn" onclick="showColumnSchedule(5)">П'ятниця</button>
         </div>
         <table id="data-table1" border="1">
           <thead>

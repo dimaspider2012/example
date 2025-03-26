@@ -14,14 +14,18 @@ let fetchedDataSchedule = {
   1: [],
   2: [],
   3: [],
-  4: [], 
-  5: []
-}
-let selectedClass = null 
-let selectedDayButton = null
+  4: [],
+  5: [],
+};
+let selectedClass = null;
+let selectDay = 1;
+let selectedDayButton = null;
+const content = document.querySelector("#content");
+const loader = document.querySelector("#loader");
 const tablecontainer = document.querySelector(".table-contener");
 const daybuttons = document.querySelectorAll(".btns-table .btn");
-tablecontainer.style.display = "none"
+tablecontainer.style.display = "none";
+content.style.display = "none";
 async function fetchData() {
   try {
     const response = await fetch(scriptUrl);
@@ -29,28 +33,29 @@ async function fetchData() {
     const data = await response.json();
     console.log(data);
     fetchedDataPeople = data.slice(1, 21);
-    fetchedDataSchedule[1] = data.slice(22, 29)
+    fetchedDataSchedule[1] = data.slice(22, 29);
     fetchedDataSchedule[2] = data.slice(29, 36);
-    fetchedDataSchedule[3] = data.slice(36, 43)
-    fetchedDataSchedule[4] = data.slice(43, 50)
-    fetchedDataSchedule[5] = data.slice(50, 57)
+    fetchedDataSchedule[3] = data.slice(36, 43);
+    fetchedDataSchedule[4] = data.slice(43, 50);
+    fetchedDataSchedule[5] = data.slice(50, 57);
+    setTimeout(() => {
+      loader.style.display = "none";
+      content.style.display = "block";
+    }, 1000);
   } catch (error) {
     console.error("Error", error);
   }
 }
 
 function showColumn(columnIndex) {
-  selectedClass=columnIndex
-  tablecontainer.style.display = "flex"
+  selectedClass = columnIndex;
+  selectDay = 1;
+  tablecontainer.style.display = "flex";
   const tableBody = document.querySelector("#data-table tbody"); // Оновлено
+  tableBody.innerHTML = "";
   const nameheader = document.querySelector("#name-header");
   nameheader.style.display = "table-cell";
-  if (!tableBody) {
-    console.error("Table body not found!");
-    return;
-  }
 
-  tableBody.innerHTML = "";
   fetchedDataPeople.forEach((row) => {
     const tr = document.createElement("tr");
     const td = document.createElement("td");
@@ -58,24 +63,18 @@ function showColumn(columnIndex) {
     tr.appendChild(td);
     tableBody.appendChild(tr);
   });
-  activeDayButton(daybuttons[0])
-  showColumnSchedule(1)
+  activeDayButton(1);
+  showColumnSchedule(1);
 }
 
 function showColumnSchedule(dayIndex) {
-  if (selectedClass===null) {
-    alert("Select class")
-    return
-  }
+  selectDay = dayIndex;
   const tableBody = document.querySelector("#data-table1 tbody"); // Оновлено
+  tableBody.innerHTML = "";
   const nameheader = document.querySelector("#name-header1");
   nameheader.style.display = "table-cell";
-  if (!tableBody) {
-    console.error("Table body not found!");
-    return;
-  }
+  if (!selectedClass) return;
 
-  tableBody.innerHTML = "";
   fetchedDataSchedule[dayIndex].forEach((row) => {
     const tr = document.createElement("tr");
     const td = document.createElement("td");
@@ -83,15 +82,16 @@ function showColumnSchedule(dayIndex) {
     tr.appendChild(td);
     tableBody.appendChild(tr);
   });
-  activeDayButton(daybuttons[dayIndex-1 ])
+  activeDayButton(dayIndex);
 }
-function activeDayButton(button){
+function activeDayButton(dayIndex) {
   if (selectedDayButton) {
-    selectedDayButton.style.background=""
-    selectedDayButton.style.color=""
+    selectedDayButton.style.background = "#ace1af";
+    selectedDayButton.style.color = "black";
   }
-  button.style.background="#4caf50"
-   button.style.color="#fff"
-   selectedDayButton=button
+  const daybutton = document.querySelectorAll(".btns-table .btn")[dayIndex - 1];
+  button.style.background = "#4caf50";
+  button.style.color = "#fff";
+  selectedDayButton = daybutton;
 }
 fetchData();
