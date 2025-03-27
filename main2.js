@@ -90,8 +90,8 @@ function activeDayButton(dayIndex) {
     selectedDayButton.style.color = "black";
   }
   const daybutton = document.querySelectorAll(".btns-table .btn")[dayIndex - 1];
-  button.style.background = "#4caf50";
-  button.style.color = "#fff";
+  daybutton.style.background = "#4caf50";
+  daybutton.style.color = "#fff";
   selectedDayButton = daybutton;
 }
 fetchData();
