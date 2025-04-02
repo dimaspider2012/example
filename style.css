@@ -15,6 +15,13 @@ body {
   background: #ceead2;
   border-radius: 30px;
 }
+.btnc {
+  margin: 10px;
+  font-size: 48px;
+  border-radius: 30px;
+  background: #00ffff;
+  padding: 10px 24px;
+}
 .btn-1 {
   background: #cfe2f3;
 }
