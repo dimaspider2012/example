@@ -10,6 +10,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+p{
+  color: black;
+}
 .btn {
   padding: 10px 24px;
   background: #ceead2;
