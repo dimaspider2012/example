@@ -145,3 +145,10 @@ input {
     transform: rotate(360deg);
   }
 }
+.btns {
+  display: inline;
+  flex-direction: column;
+}
+a {
+  text-decoration: none;
+}

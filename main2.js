@@ -17,6 +17,13 @@ let fetchedDataSchedule = {
   4: [],
   5: [],
 };
+const btnlinkdz = document.querySelector(".btn-link-dz");
+const btnlinkmark = document.querySelector(".btn-link-mark");
+const btnlink = document.querySelector(".btn-link");
+btnlink.addEventListener("click", () => {
+  btnlinkdz.style.display = "inline";
+  btnlinkmark.style.display = "inline";
+});
 let selectedClass = null;
 let selectDay = 1;
 let selectedDayButton = null;
@@ -46,7 +53,6 @@ async function fetchData() {
     console.error("Error", error);
   }
 }
-
 function showColumn(columnIndex) {
   selectedClass = columnIndex;
   selectDay = 1;

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Проєкт для класу</title>
+  </head>
+  <body>
+    <div id="loader" class="loader-container">
+      <div class="loader"></div>
+    </div>
+    <div class="conteiner" id="content" style="display: none">
+      <button class="btn btn-1" onclick="showColumn(1)">6-1</button>
+      <button class="btn btn-2" onclick="showColumn(2)">6-2</button>
+      <button class="btn btn-3" onclick="showColumn(3)">6-3</button>
+      <button class="btn btn-author">Про авторів</button>
+      <button class="btn btn-link">Перейти до</button><br />
+      <span class="btns">
+        <a href="https://hw.boiko.com.ua/login">
+          <button class="btn btn-link-dz" style="display: none">дз</button>
+        </a>
+        <a href="https://m.boiko.com.ua/">
+          <button class="btn btn-link-mark" style="display: none">
+            сайту з оцінками
+          </button>
+        </a>
+      </span>
+      <h1 class="welcome">Ласкаво просимо!</h1>
+      <div class="table-contener">
+        <table id="data-table" border="1">
+          <thead>
+            <tr>
+              <th id="name-header" style="display: none">Прізвище та ім'я</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="btns-table">
+          <button class="btn" onclick="showColumnSchedule(1)">Понеділок</button>
+          <button class="btn" onclick="showColumnSchedule(2)">Вівторок</button>
+          <button class="btn" onclick="showColumnSchedule(3)">Середа</button>
+          <button class="btn" onclick="showColumnSchedule(4)">Четвер</button>
+          <button class="btn" onclick="showColumnSchedule(5)">П'ятниця</button>
+        </div>
+        <table id="data-table1" border="1">
+          <thead>
+            <tr>
+              <th id="name-header1" style="display: none">Розклад</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="main2.js"></script>
+  </body>
+</html>
