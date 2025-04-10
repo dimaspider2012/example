@@ -11,6 +11,7 @@ body {
   align-items: center;
 }
 p{
+  margin: 5px;
   padding: 10px;
   color: black;
 }
