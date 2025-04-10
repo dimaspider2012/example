@@ -11,6 +11,7 @@ body {
   align-items: center;
 }
 p{
+  padding: 10px;
   color: black;
 }
 .btn {
