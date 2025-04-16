@@ -40,8 +40,8 @@ async function fetchData() {
     const data = await response.json();
     console.log(data);
     fetchedDataPeople = data.slice(1, 22);
-    fetchedDataSchedule[1] = data.slice(23, 30);
-    fetchedDataSchedule[2] = data.slice(30, 38);
+    fetchedDataSchedule[1] = data.slice(24, 31);
+    fetchedDataSchedule[2] = data.slice(31, 38);
     fetchedDataSchedule[3] = data.slice(38, 45);
     fetchedDataSchedule[4] = data.slice(45, 52);
     fetchedDataSchedule[5] = data.slice(52, 59);
