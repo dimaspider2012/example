@@ -39,12 +39,12 @@ async function fetchData() {
     if (!response.ok) throw new Error("Network response was not ok");
     const data = await response.json();
     console.log(data);
-    fetchedDataPeople = data.slice(1, 22);
-    fetchedDataSchedule[1] = data.slice(23, 30);
-    fetchedDataSchedule[2] = data.slice(30, 37);
-    fetchedDataSchedule[3] = data.slice(37, 44);
-    fetchedDataSchedule[4] = data.slice(44, 51);
-    fetchedDataSchedule[5] = data.slice(51, 58);
+    fetchedDataPeople = data.slice(37, 58);
+    fetchedDataSchedule[1] = data.slice(1, 8);
+    fetchedDataSchedule[2] = data.slice(9, 16);
+    fetchedDataSchedule[3] = data.slice(17, 24);
+    fetchedDataSchedule[4] = data.slice(25, 32);
+    fetchedDataSchedule[5] = data.slice(33, 40);
     setTimeout(() => {
       loader.style.display = "none";
       content.style.display = "block";
