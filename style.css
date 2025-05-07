@@ -1,6 +1,6 @@
 body {
   font-family: system-ui;
-  background: url("https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg");
+  /* background: url("https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-p{
+p {
   color: black;
 }
 .btn {
