@@ -1,3 +1,4 @@
+
 body {
   font-family: system-ui;
   /* background: url("https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg"); */
@@ -154,4 +155,8 @@ input {
 }
 a {
   text-decoration: none;
+}
+#comments{
+  width: 180px;
+  height: 100px;
 }

@@ -53,11 +53,11 @@
           <tbody></tbody>
         </table>
       </div>
-    </div>
-    <div>
-<input id="noteId" placeholder="Мета коментаря" />
-    <textarea id="noteText" rows="3" placeholder="Введіть опис мети коментаря"></textarea>
-    <button onclick="saveNote()">Відправити</button>  
+    </div><br />
+    <div id="comments" style="display: none;">
+<input id="noteId" placeholder="Мета коментаря" style="margin: 10px;"/><br />
+    <textarea id="noteText" rows="3" placeholder="Введіть опис мети коментаря" style="margin: 10px;"></textarea><br/>
+    <button onclick="saveNote()" style="margin: 10px;">Відправити</button>  
       <div id="notesList"></div>
     </div>
     <script src="main2.js"></script>
@@ -89,7 +89,7 @@
       const id = document.getElementById("noteId").value.trim();
       const text = document.getElementById("noteText").value.trim();
       if (!id || !text) {
-        alert("⚠️ Введіть мету коментарів та опис!");
+        alert("Введіть мету коментарів та опис!");
         return;
       }
       await setDoc(doc(db, "notes", id), {

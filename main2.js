@@ -43,6 +43,7 @@ let fetchedDataSchedule = {
 const btnlinkdz = document.querySelector(".btn-link-dz");
 const btnlinkmark = document.querySelector(".btn-link-mark");
 const btnlink = document.querySelector(".btn-link");
+const comments = document.querySelector("#comments")
 btnlink.addEventListener("click", () => {
   btnlinkdz.style.display = "inline";
   btnlinkmark.style.display = "inline";
@@ -71,6 +72,7 @@ async function fetchData() {
     setTimeout(() => {
       loader.style.display = "none";
       content.style.display = "block";
+      comments.style.display = "flex"
     }, 1000);
   } catch (error) {
     console.error("Error", error);
