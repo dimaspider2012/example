@@ -54,6 +54,12 @@
         </table>
       </div>
     </div>
+    <div>
+<input id="noteId" placeholder="Мета коментаря" />
+    <textarea id="noteText" rows="3" placeholder="Введіть опис мети коментаря"></textarea>
+    <button onclick="saveNote()">Відправити</button>  
+      <div id="notesList"></div>
+    </div>
     <script src="main2.js"></script>
     <script type="module">
       // Import the functions you need from the SDKs you need
@@ -79,6 +85,21 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getFirestore(app)
+        async function saveNote() {
+      const id = document.getElementById("noteId").value.trim();
+      const text = document.getElementById("noteText").value.trim();
+      if (!id || !text) {
+        alert("⚠️ Введіть мету коментарів та опис!");
+        return;
+      }
+      await setDoc(doc(db, "notes", id), {
+        content: text,
+        time: Date.now()
+      });
+      document.getElementById("noteId").value = "";
+      document.getElementById("noteText").value = "";
+      loadNotes();
+      }
     </script>
   </body>
 </html>
