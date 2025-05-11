@@ -157,6 +157,10 @@ a {
   text-decoration: none;
 }
 #comments{
-  width: 180px;
-  height: 100px;
+  width: auto;
+  height: 80px;
+}
+#btn-note{
+  background: #00fffb92;
+  color: black;
 }
