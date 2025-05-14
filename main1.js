@@ -1,13 +1,6 @@
-const login = document.getElementById("login");
+const login = document.getElementById("#login");
 const password = document.getElementById("password");
 const btnlogin = document.querySelector(".btn-login");
-btnlogin.addEventListener("click", () => {
-  if (login.value === "admin" && password.value === "123") {
-    window.location.href = "about.html";
-  } else {
-    console.log("error");
-  }
-});
 const bg = {
   spring:
     "https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg",

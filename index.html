@@ -19,10 +19,36 @@
         placeholder="Введіть пароль"
         name="Password"
       />
-      <button class="btn btn-login">Вхід</button>
+      <button class="btn btn-login" onclick="login()">Вхід</button>
       <p>Login: admin</p>
       <p>Password: 123</p>
     </div>
-    <script src="main1.js"></script>
+    <script type="module" src="main1.js">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+                              const firebaseConfig = {
+                          apiKey: "AIzaSyAXXqcGvYve01mq3JgzgfVTfcLiWcQVbhA",
+                          authDomain: "classproject-bac20.firebaseapp.com"}
+                        const app = initializeApp(firebaseConfig);
+                        const auth = getAuth(app);
+                        function login() {
+        const login = document.getElementById("login").value;
+        const password = document.getElementById("password").value;
+        auth.signInWithEmailAndPassword(email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log("Успішний вхід:", user.email);
+            window.location.href = "about.html";
+          })
+          .catch((error) => {
+            console.error("Помилка входу:", error.message);
+          });
+        if (login.value === "admin" && password.value === "123") {
+          window.location.href = "about.html";
+        } else {
+          console.log("error");
+        }
+      }
+    </script>
   </body>
 </html>

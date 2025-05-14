@@ -53,19 +53,42 @@
           <tbody></tbody>
         </table>
       </div>
-    </div><br />
-    <div id="comments" style="display: none;">
-<input id="noteId" placeholder="Мета коментаря" style="margin: 10px;"/><br />
-    <textarea id="noteText" rows="3" placeholder="Введіть коментар" style="margin: 10px;"></textarea><br/>
-    <button class="btn" id="btn-note" onclick="saveNote()" style="margin: 10px;">Відправити</button>  
-      <div id="notesList"></div>
+      <div id="comments" style="display: none; flex-direction: column">
+        <input
+          id="noteId"
+          placeholder="Мета коментаря"
+          style="margin: 10px"
+        /><br />
+        <textarea
+          id="noteText"
+          rows="3"
+          placeholder="Введіть коментар"
+          style="margin: 10px"
+        ></textarea
+        ><br />
+        <button
+          class="btn"
+          id="btn-note"
+          onclick="saveNote()"
+          style="margin: 10px"
+        >
+          Відправити
+        </button>
+        <div id="notesList"></div>
+      </div>
     </div>
     <script src="main2.js"></script>
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
-      import { getFirestore, collection, doc, setDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        setDoc,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
       // TODO: Add SDKs for Firebase products that you want to use
       // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -84,21 +107,21 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
-      const db = getFirestore(app)
-        async function saveNote() {
-      const id = document.getElementById("noteId").value.trim();
-      const text = document.getElementById("noteText").value.trim();
-      if (!id || !text) {
-        alert("Введіть мету коментарів та опис!");
-        return;
-      }
-      await setDoc(doc(db, "notes", id), {
-        content: text,
-        time: Date.now()
-      });
-      document.getElementById("noteId").value = "";
-      document.getElementById("noteText").value = "";
-      // loadNotes();
+      const db = getFirestore(app);
+      async function saveNote() {
+        const id = document.getElementById("noteId").value.trim();
+        const text = document.getElementById("noteText").value.trim();
+        if (!id || !text) {
+          alert("Введіть мету коментарів та опис!");
+          return;
+        }
+        await setDoc(doc(db, "notes", id), {
+          content: text,
+          time: Date.now(),
+        });
+        document.getElementById("noteId").value = "";
+        document.getElementById("noteText").value = "";
+        // loadNotes();
       }
       window.saveNote = saveNote;
     </script>
