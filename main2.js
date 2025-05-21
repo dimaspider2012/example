@@ -1,4 +1,27 @@
 const btnauthor = document.querySelector(".btn-author");
+const login = document.querySelector(".login");
+const password = document.querySelector(".password");
+const btnlogin = document.querySelector(".btn-login");
+const text = document.querySelector(".text");
+document.addEventListener("DOMContentLoaded", () => {
+  btnlogin.addEventListener("click", () => {
+    console.log(btnlogin);
+    if (login.value === "guest" && password.value === "123") {
+      window.location.href = "about.html";
+    } else {
+      if (
+        login.value === "dima.kamikaze@gmail.com" &&
+        password.value === "admin123"
+      ) {
+        window.location.href = "about.html";
+        admin = "Yes";
+      } else {
+        text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
+        text.style.color = "red";
+      }
+    }
+  });
+});
 
 // btnauthor.addEventListener("click", () => {
 //   window.location.href = "index3.html";
@@ -23,8 +46,8 @@ function getSeasonByData(date = new Date()) {
 }
 const currentSeason = getSeasonByData();
 const currentBg = bg[currentSeason];
-console.log(currentSeason);
-console.log(currentBg);
+// console.log(currentSeason);
+// console.log(currentBg);
 document.body.style.backgroundImage = `url(${currentBg})`;
 /* Весна: https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg
 Осінь: https://tsystem.com.ua/wp-content/uploads/2024/09/autumn.jpg
@@ -43,7 +66,7 @@ let fetchedDataSchedule = {
 const btnlinkdz = document.querySelector(".btn-link-dz");
 const btnlinkmark = document.querySelector(".btn-link-mark");
 const btnlink = document.querySelector(".btn-link");
-const comments = document.querySelector("#comments")
+const comments = document.querySelector("#comments");
 btnlink.addEventListener("click", () => {
   btnlinkdz.style.display = "inline";
   btnlinkmark.style.display = "inline";
@@ -72,7 +95,7 @@ async function fetchData() {
     setTimeout(() => {
       loader.style.display = "none";
       content.style.display = "block";
-      comments.style.display = "flex"
+      comments.style.display = "flex";
     }, 1000);
   } catch (error) {
     console.error("Error", error);
