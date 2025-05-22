@@ -9,17 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (login.value === "guest" && password.value === "123") {
       window.location.href = "about.html";
     } else {
-      if (
-        login.value === "dima.kamikaze@gmail.com" &&
-        password.value === "admin123"
-      ) {
-        window.location.href = "about.html";
-        sessionStorage.setItem("isAdmin", "Yes");
-      //  window.admin = "Yes";
-      } else {
+      // if (
+      //   login.value === "dima.kamikaze@gmail.com" &&
+      //   password.value === "admin123"
+      // ) {
+      //   window.location.href = "about.html";
+      //   // sessionStorage.setItem("isAdmin", "Yes");
+      // //  window.admin = "Yes";
+      // } else {
+        // }
         text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
         text.style.color = "red";
-      }
     }
   });
 });
