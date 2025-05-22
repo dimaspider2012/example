@@ -16,25 +16,22 @@
       <button class="btn btn-1" onclick="showColumn(1)">6-1</button>
       <button class="btn btn-2" onclick="showColumn(2)">6-2</button>
       <button class="btn btn-3" onclick="showColumn(3)">6-3</button>
-      <button class="btn btn-author">Про авторів</button>
+      <!-- <button class="btn btn-author">Про авторів</button> -->
       <button class="btn btn-link">Перейти до</button><br />
       <span class="btns">
         <a href="https://hw.boiko.com.ua/login">
           <button class="btn btn-link-dz" style="display: none">дз</button>
         </a>
         <a href="https://m.boiko.com.ua/">
-          <button class="btn btn-link-mark" style="display: none">
-            сайту з оцінками
-          </button>
+          <button class="btn btn-link-mark" style="display: none">сайт з оцінками</button>
         </a>
       </span>
       <h1 class="welcome">Ласкаво просимо!</h1>
       <div class="table-contener">
         <table id="data-table" border="1">
           <thead>
-            <tr>
-              <th id="name-header" style="display: none">Прізвище та ім'я</th>
-            </tr>
+            <tr> 
+              <th id="name-header" style="display: none">Прізвище та ім'я</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -56,30 +53,18 @@
       </div>
       <div id="comments" style="display: none; flex-direction: column">
         <input
-          id="noteId"
-          placeholder="Мета коментаря"
-          style="margin: 10px"
-        /><br />
-        <textarea
-          id="noteText"
-          rows="3"
-          placeholder="Введіть коментар"
-          style="margin: 10px"
-        ></textarea
-        ><br />
-        <button
-          class="btn"
-          id="btn-note"
-          onclick="saveNote()"
-          style="margin: 5px"
-        >
-          Відправити
-        </button>
+         id="noteId" 
+         placeholder="Мета коментаря" 
+         style="margin: 10px" />
+        <textarea 
+         id="noteText" 
+         rows="3"
+         placeholder="Введіть коментар" style="margin: 10px"></textarea><br />
+        <button class="btn" id="btn-note" onclick="saveNote()" style="margin: 5px">Відправити</button>
         <div id="notesList"></div>
       </div>
     </div>
     <script type="module">
-      // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
       import {
@@ -88,28 +73,24 @@
         doc,
         setDoc,
         getDocs,
+        updateDoc,
+        deleteDoc,
       } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
         apiKey: "AIzaSyAXXqcGvYve01mq3JgzgfVTfcLiWcQVbhA",
         authDomain: "classproject-bac20.firebaseapp.com",
         projectId: "classproject-bac20",
-        storageBucket: "classproject-bac20.firebasestorage.app",
+        storageBucket: "classproject-bac20.appspot.com",
         messagingSenderId: "115689709324",
         appId: "1:115689709324:web:19c4b4667a005e1557b329",
         measurementId: "G-CRXPGQV58Z",
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getFirestore(app);
-      document.querySelector("DOMContentLoaded", ()=>{
-        async function saveNote() {
+      window.saveNote = async function () {
         const id = document.getElementById("noteId").value.trim();
         const text = document.getElementById("noteText").value.trim();
         if (!id || !text) {
@@ -122,40 +103,50 @@
         });
         document.getElementById("noteId").value = "";
         document.getElementById("noteText").value = "";
-         loadNotes();
-      }
-      })
-      window.saveNote = saveNote;
-      if(admin==="Yes"){
-         async function loadNotes() {
-      const notesList = document.getElementById("notesList");
-      notesList.innerHTML = "<p style='text-align:center;'>⏳ Завантаження...</p>";
-      const querySnapshot = await getDocs(collection(db, "notes"));
-      let html = "";
-      querySnapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        html += `
-          <div class="note">
-            <b>ID: ${docSnap.id}</b><br>
-            <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
-            <div class="note-buttons">
-              <button onclick="updateNote('${docSnap.id}')">✏️ Редагувати</button>
-           <button onclick="deleteNote('${docSnap.id}')">🗑️ Видалити</button>
-            </div>
-          </div>
-        `;
+        loadNotes();
       };
-      notesList.innerHTML = html || "<p style='text-align:center;'>📭 Немає нотаток</p>";
-    }
+const adminFlag = sessionStorage.getItem("isAdmin");
+if (adminFlag === "Yes") {
+  window.admin = "Yes";
+      if (window.admin === "Yes") {
+        window.loadNotes = async function () {
+          const notesList = document.getElementById("notesList");
+          notesList.innerHTML = "<p style='text-align:center;'>⏳ Завантаження...</p>";
+          const querySnapshot = await getDocs(collection(db, "notes"));
+          let html = "";
+          querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            html += `
+              <div class="note">
+                <b>ID: ${docSnap.id}</b><br>
+                <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
+                <div class="note-buttons">
+                  <button onclick="updateNote('${docSnap.id}')">✏️ Редагувати</button>
+                  <button onclick="deleteNote('${docSnap.id}')">🗑️ Видалити</button>
+                </div>
+              </div>
+            `;
+          });
+          notesList.innerHTML = html || "<p style='text-align:center;'>📭 Немає нотаток</p>";
+        };
 
-//    window.updateNote = async function(id) {
-//      const newText = document.getElementById("edit-" + id).value;
-//      await updateDoc(doc(db, "notes", id), {
-        content: newText
-      });
-//      loadNotes();
-//    }
+        window.updateNote = async function (id) {
+          const newText = document.getElementById("edit-" + id).value;
+          await updateDoc(doc(db, "notes", id), {
+            content: newText,
+          });
+          loadNotes();
+        };
+
+        window.deleteNote = async function (id) {
+          await deleteDoc(doc(db, "notes", id));
+          loadNotes();
+        };
+        document.addEventListener("DOMContentLoaded", () => {
+          loadNotes();
+        });
       }
+    }
     </script>
   </body>
 </html>

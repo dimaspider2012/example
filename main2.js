@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
         password.value === "admin123"
       ) {
         window.location.href = "about.html";
-        admin = "Yes";
+        sessionStorage.setItem("isAdmin", "Yes");
+      //  window.admin = "Yes";
       } else {
         text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
         text.style.color = "red";
