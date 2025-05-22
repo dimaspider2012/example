@@ -108,7 +108,8 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const db = getFirestore(app);
-      async function saveNote() {
+      document.querySelector("DOMContentLoaded", ()=>{
+        async function saveNote() {
         const id = document.getElementById("noteId").value.trim();
         const text = document.getElementById("noteText").value.trim();
         if (!id || !text) {
@@ -121,9 +122,40 @@
         });
         document.getElementById("noteId").value = "";
         document.getElementById("noteText").value = "";
-        // loadNotes();
+         loadNotes();
       }
+      })
       window.saveNote = saveNote;
+      if(admin==="Yes"){
+         async function loadNotes() {
+      const notesList = document.getElementById("notesList");
+      notesList.innerHTML = "<p style='text-align:center;'>⏳ Завантаження...</p>";
+      const querySnapshot = await getDocs(collection(db, "notes"));
+      let html = "";
+      querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        html += `
+          <div class="note">
+            <b>ID: ${docSnap.id}</b><br>
+            <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
+            <div class="note-buttons">
+              <button onclick="updateNote('${docSnap.id}')">✏️ Редагувати</button>
+           <button onclick="deleteNote('${docSnap.id}')">🗑️ Видалити</button>
+            </div>
+          </div>
+        `;
+      };
+      notesList.innerHTML = html || "<p style='text-align:center;'>📭 Немає нотаток</p>";
+    }
+
+//    window.updateNote = async function(id) {
+//      const newText = document.getElementById("edit-" + id).value;
+//      await updateDoc(doc(db, "notes", id), {
+        content: newText
+      });
+//      loadNotes();
+//    }
+      }
     </script>
   </body>
 </html>
