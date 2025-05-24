@@ -9,15 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (login.value === "guest" && password.value === "123") {
       window.location.href = "about.html";
     } else {
-      // if (
-      //   login.value === "dima.kamikaze@gmail.com" &&
-      //   password.value === "admin123"
-      // ) {
-      //   window.location.href = "about.html";
-      //   // sessionStorage.setItem("isAdmin", "Yes");
-      // //  window.admin = "Yes";
-      // } else {
-        // }
+      if (
+        login.value === "dima.kamikaze@gmail.com" &&
+        password.value === "admin123"
+      ) {
+        window.location.href = "about.html";
+        sessionStorage.setItem("isAdmin", "Yes");
+      //  window.admin = "Yes";
+      } else {
+        }
         text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
         text.style.color = "red";
     }
@@ -68,6 +68,7 @@ const btnlinkdz = document.querySelector(".btn-link-dz");
 const btnlinkmark = document.querySelector(".btn-link-mark");
 const btnlink = document.querySelector(".btn-link");
 const comments = document.querySelector("#comments");
+const btnback = document.querySelector(".btn-back");
 btnlink.addEventListener("click", () => {
   btnlinkdz.style.display = "inline";
   btnlinkmark.style.display = "inline";

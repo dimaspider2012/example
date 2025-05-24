@@ -17,7 +17,8 @@
       <button class="btn btn-2" onclick="showColumn(2)">6-2</button>
       <button class="btn btn-3" onclick="showColumn(3)">6-3</button>
       <!-- <button class="btn btn-author">Про авторів</button> -->
-      <button class="btn btn-link">Перейти до</button><br />
+      <button class="btn btn-link">Перейти до</button>
+      <!-- <button class="btn btn-back">Вихід</button> -->
       <span class="btns">
         <a href="https://hw.boiko.com.ua/login">
           <button class="btn btn-link-dz" style="display: none">дз</button>
@@ -60,11 +61,14 @@
          id="noteText" 
          rows="3"
          placeholder="Введіть коментар" style="margin: 10px"></textarea><br />
-        <button class="btn" id="btn-note" onclick="saveNote()" style="margin: 5px">Відправити</button>
+        <button class="btn" id="btn-note" onclick="saveNote()" style="margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">Відправити</button>
         <div id="notesList"></div>
       </div>
     </div>
     <script type="module">
+      window.addEventListener("beforeunload", function () {
+  sessionStorage.removeItem("isAdmin");
+});
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
       import {
@@ -73,7 +77,6 @@
         doc,
         setDoc,
         getDocs,
-        updateDoc,
         deleteDoc,
       } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
@@ -103,7 +106,6 @@
         });
         document.getElementById("noteId").value = "";
         document.getElementById("noteText").value = "";
-        loadNotes();
       };
 const adminFlag = sessionStorage.getItem("isAdmin");
 if (adminFlag === "Yes") {
@@ -118,10 +120,9 @@ if (adminFlag === "Yes") {
             const data = docSnap.data();
             html += `
               <div class="note">
-                <b>ID: ${docSnap.id}</b><br>
+                <textarea class="metacomment">Мета коментарія: ${docSnap.id}</textarea><br>
                 <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
                 <div class="note-buttons">
-                  <button onclick="updateNote('${docSnap.id}')">✏️ Редагувати</button>
                   <button onclick="deleteNote('${docSnap.id}')">🗑️ Видалити</button>
                 </div>
               </div>
@@ -130,13 +131,6 @@ if (adminFlag === "Yes") {
           notesList.innerHTML = html || "<p style='text-align:center;'>📭 Немає нотаток</p>";
         };
 
-        window.updateNote = async function (id) {
-          const newText = document.getElementById("edit-" + id).value;
-          await updateDoc(doc(db, "notes", id), {
-            content: newText,
-          });
-          loadNotes();
-        };
 
         window.deleteNote = async function (id) {
           await deleteDoc(doc(db, "notes", id));
