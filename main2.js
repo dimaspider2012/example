@@ -47,8 +47,8 @@ function getSeasonByData(date = new Date()) {
 }
 const currentSeason = getSeasonByData();
 const currentBg = bg[currentSeason];
-// console.log(currentSeason);
-// console.log(currentBg);
+console.log(currentSeason);
+console.log(currentBg);
 document.body.style.backgroundImage = `url(${currentBg})`;
 /* Весна: https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg
 Осінь: https://tsystem.com.ua/wp-content/uploads/2024/09/autumn.jpg
