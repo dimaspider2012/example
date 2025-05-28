@@ -5,7 +5,7 @@ body {
   background-size: cover;
   color: white;
   text-align: center;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,11 @@ p {
   background: white;
   border-radius: 12px;
   gap: 10px;
+}
+.table-contener {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 .welcome {
   color: black;
@@ -98,7 +103,7 @@ input {
   border-bottom: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   #data-table {
     font-size: 16px;
   }
@@ -108,12 +113,18 @@ input {
   }
   .conteiner {
     overflow-x: auto;
+    overflow-y: auto;
+  }
+  .table-contener {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
-.table-contener {
-  display: flex;
-  gap: 30px;
+.conteiner {
+  display: block;
+  justify-content: center;
+  align-items: center;
 }
+
 .btns-table {
   display: flex;
   flex-direction: column;
@@ -161,6 +172,7 @@ a {
   background: white;
   border-radius: 20px;
   margin: 10px;
+  max-width: 300px;
 }
 #btn-note {
   /* background: #00fffb92; */
@@ -173,11 +185,14 @@ textarea {
   padding: 5px;
   border-radius: 10px;
 }
-.metacomment {
+/* .metacomment {
   display: flex;
   gap: 10px;
   padding: auto;
-  background: #f0f0f0;
   border-radius: 10px;
   color: black;
+  max-width: 30px;
+  text-align: center;
 }
+.noteList {
+} */

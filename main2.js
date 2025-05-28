@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ) {
         window.location.href = "about.html";
         sessionStorage.setItem("isAdmin", "Yes");
-      //  window.admin = "Yes";
+        //  window.admin = "Yes";
       } else {
-        }
-        text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
-        text.style.color = "red";
+      }
+      text.textContent = "Неправильний пароль або логін. Спробуй ще раз";
+      text.style.color = "red";
     }
   });
 });
@@ -106,7 +106,7 @@ async function fetchData() {
 function showColumn(columnIndex) {
   selectedClass = columnIndex;
   selectDay = 1;
-  tablecontainer.style.display = "flex";
+  tablecontainer.style.display = "grid";
   const tableBody = document.querySelector("#data-table tbody"); // Оновлено
   tableBody.innerHTML = "";
   const nameheader = document.querySelector("#name-header");

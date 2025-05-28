@@ -23,15 +23,18 @@
           <button class="btn btn-link-dz" style="display: none">дз</button>
         </a>
         <a href="https://m.boiko.com.ua/">
-          <button class="btn btn-link-mark" style="display: none">сайт з оцінками</button>
+          <button class="btn btn-link-mark" style="display: none">
+            сайт з оцінками
+          </button>
         </a>
       </span>
       <h1 class="welcome">Ласкаво просимо!</h1>
       <div class="table-contener">
         <table id="data-table" border="1">
           <thead>
-            <tr> 
-              <th id="name-header" style="display: none">Прізвище та ім'я</th></tr>
+            <tr>
+              <th id="name-header" style="display: none">Прізвище та ім'я</th>
+            </tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -52,22 +55,29 @@
         </table>
       </div>
       <div id="comments" style="display: none; flex-direction: column">
-        <input
-         id="noteId" 
-         placeholder="Мета коментаря" 
-         style="margin: 10px" />
-        <textarea 
-         id="noteText" 
-         rows="3"
-         placeholder="Введіть коментар" style="margin: 10px"></textarea><br />
-        <button class="btn" id="btn-note" onclick="saveNote()" style="margin-bottom: 10px; margin-left: 10px; margin-right: 10px;">Відправити</button>
+        <input id="noteId" placeholder="Мета коментаря" style="margin: 10px" />
+        <textarea
+          id="noteText"
+          rows="3"
+          placeholder="Введіть коментар"
+          style="margin: 10px"
+        ></textarea
+        ><br />
+        <button
+          class="btn"
+          id="btn-note"
+          onclick="saveNote()"
+          style="margin-bottom: 10px; margin-left: 10px; margin-right: 10px"
+        >
+          Відправити
+        </button>
         <div id="notesList"></div>
       </div>
     </div>
     <script type="module">
       window.addEventListener("beforeunload", function () {
-  sessionStorage.removeItem("isAdmin");
-});
+        sessionStorage.removeItem("isAdmin");
+      });
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
       import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
       import {
@@ -106,40 +116,41 @@
         document.getElementById("noteId").value = "";
         document.getElementById("noteText").value = "";
       };
-const adminFlag = sessionStorage.getItem("isAdmin");
-if (adminFlag === "Yes") {
-  window.admin = "Yes";
-      if (window.admin === "Yes") {
-        window.loadNotes = async function () {
-          const notesList = document.getElementById("notesList");
-          notesList.innerHTML = "<p style='text-align:center;'>⏳ Завантаження...</p>";
-          const querySnapshot = await getDocs(collection(db, "notes"));
-          let html = "";
-          querySnapshot.forEach((docSnap) => {
-            const data = docSnap.data();
-            html += `
-              <div class="note">
-                <textarea class="metacomment">Мета коментарія: ${docSnap.id}</textarea><br>
+      const adminFlag = sessionStorage.getItem("isAdmin");
+      if (adminFlag === "Yes") {
+        window.admin = "Yes";
+        if (window.admin === "Yes") {
+          window.loadNotes = async function () {
+            const notesList = document.getElementById("notesList");
+            notesList.innerHTML =
+              "<p style='text-align:center;'>⏳ Завантаження...</p>";
+            const querySnapshot = await getDocs(collection(db, "notes"));
+            let html = "";
+            querySnapshot.forEach((docSnap) => {
+              const data = docSnap.data();
+              html += `
+              <div class="noteList">
+                <p class="metacomment"  style="text-align: center;">Мета коментарія: <br/> ${docSnap.id}</p><br>
                 <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
                 <div class="note-buttons">
-                  <button onclick="deleteNote('${docSnap.id}')">🗑️ Видалити</button>
+                  <button onclick="deleteNote('${docSnap.id}')" class="btn btn-delete">🗑️ Видалити</button>
                 </div>
               </div>
             `;
+            });
+            notesList.innerHTML =
+              html || "<p style='text-align:center;'>Немає коментарів</p>";
+          };
+
+          window.deleteNote = async function (id) {
+            await deleteDoc(doc(db, "notes", id));
+            loadNotes();
+          };
+          document.addEventListener("DOMContentLoaded", () => {
+            loadNotes();
           });
-          notesList.innerHTML = html || "<p style='text-align:center;'>📭 Немає нотаток</p>";
-        };
-
-
-        window.deleteNote = async function (id) {
-          await deleteDoc(doc(db, "notes", id));
-          loadNotes();
-        };
-        document.addEventListener("DOMContentLoaded", () => {
-          loadNotes();
-        });
+        }
       }
-    }
     </script>
   </body>
 </html>
