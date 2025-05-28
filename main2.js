@@ -93,7 +93,7 @@ async function fetchData() {
     fetchedDataSchedule[2] = data.slice(9, 16);
     fetchedDataSchedule[3] = data.slice(17, 24);
     fetchedDataSchedule[4] = data.slice(25, 32);
-    fetchedDataSchedule[5] = data.slice(33, 40);
+    fetchedDataSchedule[5] = data.slice(30, 37);
     setTimeout(() => {
       loader.style.display = "none";
       content.style.display = "block";
