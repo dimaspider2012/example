@@ -18,38 +18,43 @@ p {
   background: #ceead2;
   border-radius: 30px;
 }
-.btnc {
-  margin: 10px;
-  font-size: 48px;
-  border-radius: 30px;
-  background: #00ffff;
-  padding: 10px 24px;
-}
+
 .btn-1 {
   background: #cfe2f3;
 }
+
 .btn-2 {
   background: #f4cccc;
 }
+
 .btn-3 {
   background: #ace1af;
 }
+
 .login-container {
   padding: 20px;
   display: flex;
+  justify-content: center;
+  align-content: center;
   flex-direction: column;
   color: black;
   background: white;
   border-radius: 12px;
   gap: 10px;
+  /* width: 400px; */
 }
+
 .table-contener {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
+
 .welcome {
   color: black;
+  padding: 150px 0;
+  /* height: 50vh; */
+  /* flex: 1; */
 }
 label {
   font-size: 20px;
@@ -119,6 +124,7 @@ input {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
 .conteiner {
   display: block;
   justify-content: center;
@@ -133,6 +139,7 @@ input {
 }
 .loader-container {
   display: flex;
+  align-content: center;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -195,4 +202,8 @@ textarea {
   text-align: center;
 }
 .noteList {
+} */
+/* #content {
+   flex-direction: column;
+  height: 100vh;
 } */

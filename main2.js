@@ -1,3 +1,4 @@
+const welcome = document.querySelector(".welcome");
 const btnauthor = document.querySelector(".btn-author");
 const login = document.querySelector(".login");
 const password = document.querySelector(".password");
@@ -50,6 +51,7 @@ const currentBg = bg[currentSeason];
 console.log(currentSeason);
 console.log(currentBg);
 document.body.style.backgroundImage = `url(${currentBg})`;
+// body.style.background = `background-repeat: no-repeat;  background-size: cover;`;
 /* Весна: https://i.pinimg.com/736x/01/1d/c4/011dc4dd931d658d9fc69e7747f3aff0.jpg
 Осінь: https://tsystem.com.ua/wp-content/uploads/2024/09/autumn.jpg
 Літо: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7mvY1EEAbcnTHdJZOxQVJysNkbaOyVFU06g&s
@@ -90,10 +92,10 @@ async function fetchData() {
     console.log(data);
     fetchedDataPeople = data.slice(37, 58);
     fetchedDataSchedule[1] = data.slice(1, 8);
-    fetchedDataSchedule[2] = data.slice(9, 16);
-    fetchedDataSchedule[3] = data.slice(17, 24);
-    fetchedDataSchedule[4] = data.slice(25, 32);
-    fetchedDataSchedule[5] = data.slice(30, 37);
+    fetchedDataSchedule[2] = data.slice(8, 15);
+    fetchedDataSchedule[3] = data.slice(15, 22);
+    fetchedDataSchedule[4] = data.slice(22, 29);
+    fetchedDataSchedule[5] = data.slice(29, 36);
     setTimeout(() => {
       loader.style.display = "none";
       content.style.display = "block";
@@ -107,6 +109,8 @@ function showColumn(columnIndex) {
   selectedClass = columnIndex;
   selectDay = 1;
   tablecontainer.style.display = "grid";
+  welcome.style.display = "none";
+  tablecontainer.style.margintop = "20px";
   const tableBody = document.querySelector("#data-table tbody"); // Оновлено
   tableBody.innerHTML = "";
   const nameheader = document.querySelector("#name-header");
