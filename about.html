@@ -130,11 +130,13 @@
               const data = docSnap.data();
               html += `
               <div class="noteList">
-                <p class="metacomment"  style="text-align: center;">Мета коментарія: <br/> ${docSnap.id}</p><br>
-                <textarea rows="3" id="edit-${docSnap.id}">${data.content}</textarea>
                 <div class="note-buttons">
                   <button onclick="deleteNote('${docSnap.id}')" class="btn btn-delete">🗑️ Видалити</button>
                 </div>
+                <p>Мета коментара:<p>
+                <p class="metacomment"  style="text-align: center;"> ${docSnap.id}</p><br>
+                <p>Коментар:<p>
+                <p rows="3" id="edit-${docSnap.id}">${data.content}</p>
               </div>
             `;
             });
